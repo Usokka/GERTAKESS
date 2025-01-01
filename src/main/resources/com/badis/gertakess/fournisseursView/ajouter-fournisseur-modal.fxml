@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import org.controlsfx.control.CheckComboBox?>
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="20" alignment="CENTER" stylesheets="@../styles.css"
+      fx:controller="com.badis.gertakess.controller.FournisseursViewControllers.AjoutFournisseurModalController"
+      styleClass="modal-container">
+
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Label text="Ajouter un fournisseur" styleClass="modal-title"/>
+
+    <VBox spacing="15" styleClass="form-container">
+        <GridPane hgap="20" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="150" prefWidth="200" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="200" prefWidth="250" />
+            </columnConstraints>
+
+            <Label text="Nom du fournisseur:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="nomFournField" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Email du fournisseur:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="emailFournField" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label text="Numéro de téléphone:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="telephoneFournField" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <Label text="Adresse du fournisseur:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField fx:id="adresseFournField" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <Label text="Catégorie des produits:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <CheckComboBox fx:id="categoriesFournCheckComboBox" maxWidth="Infinity" title="ajouter les catégories" styleClass="filter-button" HBox.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        </GridPane>
+    </VBox>
+
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="Ajouter" fx:id="addFournBtn" onAction="#addFournisseur" styleClass="btn, btn-success" />
+        <Button text="Annuler" fx:id="cancelAddBtn" onAction="#cancelAddFourn" styleClass="btn, btn-danger" />
+    </HBox>
+</VBox>
+

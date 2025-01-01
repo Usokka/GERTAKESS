@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.badis.gertakess.controller.VentesViewControllers.VentesController">
+
+    <VBox spacing="20" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding>
+            <Insets bottom="20" left="20" right="20" top="20" />
+        </padding>
+
+        <HBox>
+            <Label maxWidth="Infinity" styleClass="section-header" text="Gestion de ventes" HBox.hgrow="ALWAYS" />
+        </HBox>
+
+        <HBox spacing="10" styleClass="filters-container" HBox.hgrow="ALWAYS">
+            <TextField fx:id="employeTextField" onKeyPressed="#loadVentes" prefHeight="45.0" prefWidth="200.0" promptText="Rechercher par employe" styleClass="filter-button" HBox.hgrow="ALWAYS" />
+            <DatePicker fx:id="filtrerParDate" onAction="#loadVentes" prefHeight="45.0" prefWidth="200.0" promptText="Rechercher par date" HBox.hgrow="ALWAYS" />
+            <ComboBox fx:id="periodeComboBox" maxWidth="Infinity" onAction="#loadVentes" prefHeight="45.0" prefWidth="200.0" promptText="sélectionner une période" HBox.hgrow="ALWAYS" />
+            <Button prefHeight="45.0" prefWidth="100.0" maxWidth="Infinity" onAction="#initVentes" styleClass="init-filter-button" text="Réinitialiser" HBox.hgrow="ALWAYS" />
+        </HBox>
+
+        <HBox spacing="20" VBox.vgrow="ALWAYS">
+            <!-- Table de ventes avec largeur ajustée -->
+            <TableView fx:id="ventesTable">
+                <columns>
+                    <TableColumn fx:id="idVenteColumn" text="ID Vente" />
+                    <TableColumn fx:id="idPanierColumn" text="ID Panier" />
+                    <TableColumn fx:id="idEmployeColumn" text="ID Employé" />
+                    <TableColumn fx:id="nomEmployeColumn" text="Nom Employé" />
+                    <TableColumn fx:id="prenomEmployeColumn" text="Prénom Employé" />
+                    <TableColumn fx:id="dateColumn" text="Date" />
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                </columnResizePolicy>
+            </TableView>
+
+            <!-- Vue des détails -->
+            <VBox style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-width: 0 1 1 1; -fx-border-radius: 0 0 5 5;" HBox.hgrow="ALWAYS">
+                <VBox style="-fx-background-color: linear-gradient(to right, #8A2BE2, #4169E1, #2E8B57); -fx-background-radius: 5 5 0 0;">
+                    <padding>
+                        <Insets bottom="10" left="20" right="20" top="10" />
+                    </padding>
+                    <Label style="-fx-font-size: 24; -fx-text-fill: white; -fx-font-weight: bold;" text="Détails du Panier" />
+                </VBox>
+
+                <!-- Détails du panier -->
+                <GridPane hgap="10" vgap="10">
+                    <Label style="-fx-font-size: 16; -fx-text-fill: #8A2BE2; -fx-font-weight: bold;" text="ID Panier:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <Label fx:id="idPanierLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Label style="-fx-font-size: 16; -fx-text-fill: #4169E1; -fx-font-weight: bold;" text="Date Panier:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                    <Label fx:id="datePanierLabel" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+               </rowConstraints>
+                </GridPane>
+
+                <!-- Produits -->
+                <Label style="-fx-font-size: 18; -fx-text-fill: #2E8B57; -fx-font-weight: bold;" text="Produits du Panier:">
+                    <VBox.margin>
+                        <Insets bottom="10" top="20" />
+                    </VBox.margin>
+                </Label>
+
+                <TableView fx:id="produitsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="nomColumn" style="-fx-text-fill: #8A2BE2;" text="Nom" />
+                        <TableColumn fx:id="codeBarreColumn" style="-fx-text-fill: #4169E1;" text="Code-barre" />
+                        <TableColumn fx:id="quantiteColumn" style="-fx-text-fill: #2E8B57;" text="Quantité" />
+                        <TableColumn fx:id="prixUnitaireColumn" style="-fx-text-fill: #8A2BE2;" text="Prix Unitaire" />
+                        <TableColumn fx:id="totalColumn" style="-fx-text-fill: #4169E1;" text="Total" />
+                    </columns>
+                </TableView>
+
+                <!-- Total du panier -->
+                <HBox alignment="CENTER_RIGHT">
+                    <VBox.margin>
+                        <Insets top="20" />
+                    </VBox.margin>
+                    <Label style="-fx-font-size: 18; -fx-text-fill: #2E8B57; -fx-font-weight: bold;" text="Total du Panier:" />
+                    <Label fx:id="totalPanierLabel" style="-fx-font-size: 24; -fx-text-fill: #8A2BE2; -fx-font-weight: bold;">
+                        <HBox.margin>
+                            <Insets left="10" />
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <padding>
+                    <Insets bottom="20" left="20" right="20" top="20" />
+                </padding>
+            </VBox>
+
+            <!-- Totaux -->
+            <VBox alignment="CENTER" minWidth="200" spacing="10">
+                <VBox alignment="CENTER" styleClass="total-box">
+                    <Label text="Total ventes de l'année" />
+                    <Label fx:id="totalAnneeLabel" styleClass="total-value" />
+                </VBox>
+                <VBox alignment="CENTER" styleClass="total-box">
+                    <Label text="Total ventes du mois" />
+                    <Label fx:id="totalMoisLabel" styleClass="total-value" />
+                </VBox>
+                <VBox alignment="CENTER" styleClass="total-box">
+                    <Label text="Total ventes de la semaine" />
+                    <Label fx:id="totalSemaineLabel" styleClass="total-value" />
+                </VBox>
+                <VBox alignment="CENTER" styleClass="total-box">
+                    <Label text="Total ventes du jour" />
+                    <Label fx:id="totalJourLabel" styleClass="total-value" />
+                </VBox>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="10" styleClass="footer" HBox.hgrow="ALWAYS">
+            <Region HBox.hgrow="ALWAYS" />
+            <Button onAction="#imprimerVente" styleClass="action-button" text="Imrprimer" />
+            <Button onAction="#loadVentes" styleClass="action-button" text="Rafraîchir" />
+        </HBox>
+    </VBox>
+</AnchorPane>

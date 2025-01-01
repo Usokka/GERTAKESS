@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.badis.gertakess.controller.EmployeeViewControllers.DetailsEmpModalController"
+      stylesheets="@../styles.css"
+      styleClass="root"
+      spacing="20">
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+
+    <Label text="Détails de l'Employé" styleClass="main-title"/>
+
+    <HBox spacing="30" VBox.vgrow="ALWAYS">
+        <VBox spacing="15" styleClass="info-section" HBox.hgrow="ALWAYS">
+            <Label text="Personal Information" styleClass="section-title"/>
+            <GridPane vgap="10" hgap="15" styleClass="details-grid">
+                <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="label-bold"/>
+                <Label fx:id="idLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="label-bold"/>
+                <Label fx:id="nameLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Prénom:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="label-bold"/>
+                <Label fx:id="surnameLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="Sexe:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="label-bold"/>
+                <Label fx:id="genderLabel" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <Label text="Date de Naissance:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="label-bold"/>
+                <Label fx:id="dobLabel" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                <Label text="Addresse:" GridPane.columnIndex="0" GridPane.rowIndex="5" styleClass="label-bold"/>
+                <Label fx:id="addressLabel" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                <Label text="Numéro de tel:" GridPane.columnIndex="0" GridPane.rowIndex="6" styleClass="label-bold"/>
+                <Label fx:id="phoneLabel" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="7" styleClass="label-bold"/>
+                <Label fx:id="emailLabel" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+
+                <Label text="Situation:" GridPane.columnIndex="0" GridPane.rowIndex="8" styleClass="label-bold"/>
+                <Label fx:id="statusLabel" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+            </GridPane>
+        </VBox>
+
+        <VBox spacing="15" styleClass="info-section" HBox.hgrow="ALWAYS">
+            <Label text="Infocrmations Compte" styleClass="section-title"/>
+            <GridPane vgap="10" hgap="15" styleClass="details-grid">
+                <Label text="Mot de Passe:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="label-bold"/>
+                <Label fx:id="passwordLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Permission:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="label-bold"/>
+                <Label fx:id="permissionLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Date Création Compte:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="label-bold"/>
+                <Label fx:id="creationDateLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="Statut Compte:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="label-bold"/>
+                <Label fx:id="accountStatusLabel" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            </GridPane>
+        </VBox>
+    </HBox>
+
+    <VBox spacing="15" styleClass="info-section" VBox.vgrow="ALWAYS">
+        <Label text="Contracts" styleClass="section-title"/>
+        <TableView fx:id="contractsTable" styleClass="contracts-table" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn text="ID" fx:id="contractIdColumn" styleClass="column"/>
+                <TableColumn text="Type" fx:id="contractTypeColumn" styleClass="column"/>
+                <TableColumn text="Start Date" fx:id="startDateColumn" styleClass="column"/>
+                <TableColumn text="End Date" fx:id="endDateColumn" styleClass="column"/>
+                <TableColumn text="Quit Date" fx:id="quitDateColumn" styleClass="column"/>
+                <TableColumn text="Position" fx:id="positionColumn" styleClass="column"/>
+                <TableColumn text="Daily Salary" fx:id="salaryColumn" styleClass="column"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <Button text="Fermer" styleClass="close-button-details" onAction="#handleClose" />
+</VBox>

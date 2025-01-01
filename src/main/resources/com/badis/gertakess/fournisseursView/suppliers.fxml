@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<?import org.controlsfx.control.CheckComboBox?>
+<AnchorPane stylesheets="@../styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.badis.gertakess.controller.FournisseursViewControllers.FournisseursController">
+
+    <VBox spacing="20" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding>
+            <Insets bottom="20" left="20" right="20" top="20" />
+        </padding>
+
+        <HBox>
+            <Label maxWidth="Infinity" styleClass="section-header" text="Gestion de fournisseurs" HBox.hgrow="ALWAYS" />
+
+        </HBox>
+            <HBox spacing="10" styleClass="filters-container" HBox.hgrow="ALWAYS">
+                <TextField fx:id="filtrerParNom" onKeyPressed="#loadFournisseurs" prefHeight="45.0" prefWidth="200.0" promptText="Rechercher un fournisseur" styleClass="filter-button" HBox.hgrow="ALWAYS" />
+                <TextField fx:id="filtrerParLieu" maxWidth="Infinity" onKeyPressed="#loadFournisseurs" prefHeight="45.0" prefWidth="200.0" promptText="rechercher un lieu" styleClass="filter-button" HBox.hgrow="ALWAYS" />
+                <CheckComboBox fx:id="filtrerParCategories" prefHeight="45.0" prefWidth="200.0" maxWidth="Infinity" onMouseClicked="#loadFournisseurs" title="filtrer par catégories" HBox.hgrow="ALWAYS" />
+
+                <Button maxWidth="Infinity" onAction="#initFiltres" prefHeight="45.0" prefWidth="100.0" styleClass="init-filter-button" text="Réinitialiser" HBox.hgrow="ALWAYS" />
+            </HBox>
+
+            <TableView fx:id="fournisseursTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" />
+                    <TableColumn fx:id="nomColumn" text="Nom" />
+                    <TableColumn fx:id="numTelColumn" text="Téléphone" />
+                    <TableColumn fx:id="emailColumn" text="Email" />
+                    <TableColumn fx:id="adresseColumn" text="Adresse" />
+                    <TableColumn fx:id="categoriesColumn" text="Catégories" />
+                    <TableColumn fx:id="actionsColumn" text="Actions" />
+                </columns>
+                <columnResizePolicy>
+                    <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+                </columnResizePolicy>
+            </TableView>
+            <HBox spacing="10" styleClass="footer" HBox.hgrow="ALWAYS">
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="ajouterFournBtn" styleClass="add-button" text="Ajouter un fournisseur" />
+                <Button onAction="#loadFournisseurs" styleClass="action-button" text="Rafraîchir" />
+            </HBox>
+    </VBox>
+</AnchorPane>

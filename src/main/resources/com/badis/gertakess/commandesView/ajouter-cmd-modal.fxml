@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="10" alignment="CENTER" stylesheets="@../styles.css"
+      fx:controller="com.badis.gertakess.controller.CommandesViewControllers.AjoutCmdModalController" styleClass="modal-container">
+
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Label text="Détails de la commande" styleClass="modal-title"/>
+
+    <VBox spacing="10">
+        <GridPane hgap="20" vgap="15" alignment="CENTER" maxWidth="Infinity">
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" minWidth="120" prefWidth="120" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="200" prefWidth="250" />
+                <ColumnConstraints hgrow="NEVER" minWidth="120" prefWidth="120" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="200" prefWidth="250" />
+            </columnConstraints>
+
+            <Label text="Fournisseur:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <ComboBox fx:id="fournisseurComboBox" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.fillWidth="true" maxWidth="Infinity" />
+
+            <Label text="Date prévue:" styleClass="form-label" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <DatePicker fx:id="datePrevuePicker" styleClass="form-field" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.fillWidth="true" maxWidth="Infinity" />
+        </GridPane>
+
+        <GridPane hgap="20" vgap="15" alignment="CENTER" maxWidth="Infinity">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="150" prefWidth="200" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="100" prefWidth="150" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="100" prefWidth="150" />
+                <ColumnConstraints hgrow="NEVER" minWidth="120" prefWidth="120" />
+            </columnConstraints>
+
+            <ComboBox fx:id="produitComboBox" promptText="Choisir un produit" styleClass="form-field" GridPane.columnIndex="0" GridPane.fillWidth="true" maxWidth="Infinity" />
+            <TextField fx:id="quantiteField" promptText="Quantité" styleClass="form-field" GridPane.columnIndex="1" GridPane.fillWidth="true" maxWidth="Infinity" />
+            <TextField fx:id="prixUnitaireField" promptText="Prix unitaire" styleClass="form-field" GridPane.columnIndex="2" GridPane.fillWidth="true" maxWidth="Infinity" />
+            <Button text="Ajouter" onAction="#addProductToList" GridPane.columnIndex="3" styleClass="btn, btn-primary" maxWidth="Infinity" />
+        </GridPane>
+    </VBox>
+
+    <TableView fx:id="produitsTable" styleClass="form-table" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn text="Produit" fx:id="produitColumn">
+                <minWidth>200</minWidth>
+                <prefWidth>250</prefWidth>
+            </TableColumn>
+            <TableColumn text="Quantité" fx:id="quantiteColumn">
+                <minWidth>100</minWidth>
+                <prefWidth>150</prefWidth>
+            </TableColumn>
+            <TableColumn text="Prix unitaire" fx:id="prixUnitaireColumn">
+                <minWidth>100</minWidth>
+                <prefWidth>150</prefWidth>
+            </TableColumn>
+            <TableColumn text="Total" fx:id="totalColumn">
+                <minWidth>100</minWidth>
+                <prefWidth>150</prefWidth>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="Ajouter" fx:id="addCmdBtn" onAction="#addCommande" styleClass="btn, btn-success" />
+        <Button text="Annuler" fx:id="cancelAddBtn" onAction="#cancelAddCmd" styleClass="btn, btn-danger" />
+    </HBox>
+</VBox>

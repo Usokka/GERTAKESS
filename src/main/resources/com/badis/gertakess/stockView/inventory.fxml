@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.badis.gertakess.controller.StockViewControllers.StockController">
+
+    <VBox spacing="20" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding>
+            <Insets bottom="20" left="20" right="20" top="20" />
+        </padding>
+
+        <HBox>
+            <Label maxWidth="Infinity" styleClass="section-header" text="Gestion de stock" HBox.hgrow="ALWAYS" />
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="filters-container">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+            <TextField onKeyPressed="#loadProduits" fx:id="searchField" prefHeight="45.0" prefWidth="200.0" promptText="Rechercher un produit" styleClass="filter-button" HBox.hgrow="ALWAYS" />
+            <CheckComboBox fx:id="filterByCategories" maxWidth="Infinity" prefHeight="45.0" prefWidth="200.0" title="filtrer par catégories" HBox.hgrow="ALWAYS" />
+            <Button prefHeight="45.0" prefWidth="100.0" onAction="#initFiltresProduits" maxWidth="Infinity" styleClass="init-filter-button" text="Rénitialiser" HBox.hgrow="ALWAYS" />
+        </HBox>
+
+        <TableView fx:id="productTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID produit" />
+                <TableColumn fx:id="codeBarColumn" text="Code barre produit" />
+                <TableColumn fx:id="nameColumn" text="Nom du produit" />
+                <TableColumn fx:id="quantityColumn" text="Quantité en stock" />
+                <TableColumn fx:id="prixColumn" text="Prix Unitaire" />
+                <TableColumn fx:id="categoryColumn" text="Catégorie" />
+                <TableColumn fx:id="actionColumn" text="Actions" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+
+        <HBox spacing="10" styleClass="footer" HBox.hgrow="ALWAYS">
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="ajouterProdBtn" styleClass="add-button" text="Ajouter un Produit" />
+            <Button onAction="#loadProduits" styleClass="action-button" text="Rafraîchir" />
+        </HBox>
+    </VBox>
+</AnchorPane>

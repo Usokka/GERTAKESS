@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.badis.gertakess.controller.EmployeeViewControllers.ModifierContratModalController"
+      styleClass="modal-container"
+      stylesheets="@../styles.css">
+
+<padding>
+    <Insets top="30" right="40" bottom="30" left="40"/>
+</padding>
+
+<Label text="Modifier un Contrat" styleClass="modal-title"/>
+
+<VBox spacing="15" styleClass="form-container">
+    <GridPane hgap="20" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="150" prefWidth="200" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="200" prefWidth="250" />
+        </columnConstraints>
+
+        <Label text="Employé concerné:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <ComboBox fx:id="employeComboBox" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Date début:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <DatePicker fx:id="dateDebPicker" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Date fin:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <DatePicker fx:id="dateFinPick" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Poste:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <ComboBox fx:id="posteComboBox" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Salaire journalier:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <TextField fx:id="salaireField" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Label text="Type:" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <ComboBox fx:id="typeComboBox" styleClass="form-field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    </GridPane>
+</VBox>
+
+<HBox spacing="20" alignment="CENTER">
+    <Button text="Modifier" onAction="#modifContrat" styleClass="btn, btn-success" />
+    <Button text="Annuler" onAction="#cancelModifContr" styleClass="btn, btn-danger" />
+</HBox>
+</VBox>

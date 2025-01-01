@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="683.0" prefWidth="1123.0" stylesheets="@../styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.badis.gertakess.controller.CommandesViewControllers.CommandesController">
+<VBox prefHeight="683.0" prefWidth="1187.0" spacing="20" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+
+    <HBox>
+        <Label maxWidth="Infinity" styleClass="section-header" text="Gestion de commandes" HBox.hgrow="ALWAYS" />
+    </HBox>
+
+    <HBox alignment="BOTTOM_CENTER" spacing="10" styleClass="filters-container" HBox.hgrow="ALWAYS">
+        <TextField fx:id="fournisseurSearch" maxWidth="Infinity" onKeyPressed="#loadCommandes" prefHeight="45.0" prefWidth="200.0" promptText="Filtrer par fournisseur" styleClass="filter-button" HBox.hgrow="ALWAYS" />
+        <DatePicker fx:id="datePicker" maxWidth="Infinity" onAction="#loadCommandes" prefHeight="45.0" prefWidth="200.0" promptText="Filtrer par date" HBox.hgrow="ALWAYS" />
+        <DatePicker fx:id="datePrevPicker" maxWidth="Infinity" onAction="#loadCommandes" prefHeight="45.0" prefWidth="200.0" promptText="Filtrer par date prévue" HBox.hgrow="ALWAYS" />
+        <ComboBox fx:id="statutComboBox" maxWidth="Infinity" onAction="#loadCommandes" prefHeight="45.0" prefWidth="200.0" promptText="Filtrer par statut" HBox.hgrow="ALWAYS" />
+        <Button prefHeight="45.0" prefWidth="100.0" maxWidth="Infinity" onAction="#initFiltresCommandes" styleClass="init-filter-button" text="Rénitialiser" HBox.hgrow="ALWAYS" />
+    </HBox>
+
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+
+        <TableView fx:id="commandesTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="idCmdColumn" text="ID" />
+                <TableColumn fx:id="fournisseurColumn" text="Fournisseur" />
+                <TableColumn fx:id="dateColumn" text="Date" />
+                <TableColumn fx:id="datePrevColumn" text="Date prévue" />
+                <TableColumn fx:id="statutColumn"  text="Statut" />
+                <TableColumn fx:id="actionsColumn"  text="Actions" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+
+        <VBox style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-width: 0 1 1 1; -fx-border-radius: 0 0 5 5;"
+              HBox.hgrow="ALWAYS">
+            <VBox style="-fx-background-color: linear-gradient(to right, #8A2BE2, #4169E1, #2E8B57); -fx-background-radius: 5 5 0 0;">
+                <padding>
+                    <Insets top="10" right="20" bottom="10" left="20"/>
+                </padding>
+                <Label text="Détails de la Commande" style="-fx-font-size: 24; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </VBox>
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- Détails du panier -->
+            <GridPane hgap="20" vgap="15">
+                <!-- Première ligne -->
+                <Label text="ID Commande:" style="-fx-font-size: 16; -fx-text-fill: #8A2BE2; -fx-font-weight: bold;"
+                       GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="idCommandeLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Date Commande:" style="-fx-font-size: 16; -fx-text-fill: #4169E1; -fx-font-weight: bold;"
+                       GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                <Label fx:id="dateCommandeLabel" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                <!-- Deuxième ligne -->
+                <Label text="Date Prévue Livraison:" style="-fx-font-size: 16; -fx-text-fill: #8A2BE2; -fx-font-weight: bold;"
+                       GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label fx:id="datePrevLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Date Livraison:" style="-fx-font-size: 16; -fx-text-fill: #4169E1; -fx-font-weight: bold;"
+                       GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                <Label fx:id="dateLivrLabel" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+            </GridPane>
+
+            <!-- Produits -->
+            <Label text="Produits de la Commande:" style="-fx-font-size: 18; -fx-text-fill: #2E8B57; -fx-font-weight: bold;">
+                <VBox.margin>
+                    <Insets top="20" bottom="10"/>
+                </VBox.margin>
+            </Label>
+
+            <TableView fx:id="produitsTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn text="Nom" fx:id="nomColumn" style="-fx-text-fill: #8A2BE2;"/>
+                    <TableColumn text="Code Barre" fx:id="codeBarreColumn" style="-fx-text-fill: #4169E1;"/>
+                    <TableColumn text="Quantité" fx:id="quantiteColumn" style="-fx-text-fill: #2E8B57;"/>
+                    <TableColumn text="Prix Unitaire" fx:id="prixUnitaireColumn" style="-fx-text-fill: #8A2BE2;"/>
+                    <TableColumn text="Total" fx:id="totalColumn" style="-fx-text-fill: #4169E1;"/>
+                </columns>
+            </TableView>
+
+            <!-- Total du panier -->
+            <HBox alignment="CENTER_RIGHT">
+                <VBox.margin>
+                    <Insets top="20"/>
+                </VBox.margin>
+                <Label text="Total de la Commande:" style="-fx-font-size: 18; -fx-text-fill: #2E8B57; -fx-font-weight: bold;"/>
+                <Label fx:id="totalCmdLabel" style="-fx-font-size: 24; -fx-text-fill: #8A2BE2; -fx-font-weight: bold;">
+                    <HBox.margin>
+                        <Insets left="10"/>
+                    </HBox.margin>
+                </Label>
+            </HBox>
+        </VBox>
+
+    </HBox>
+
+    <HBox spacing="10" styleClass="footer" HBox.hgrow="ALWAYS">
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="ajouterCommandeBtn" styleClass="add-button" text="Ajouter" />
+        <Button onAction="#imprimerCommande" styleClass="action-button" text="Imprimer" />
+        <Button onAction="#loadCommandes" styleClass="action-button" text="Rafraîchir" />
+    </HBox>
+    </VBox>
+</AnchorPane>

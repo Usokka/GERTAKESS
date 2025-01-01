@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="30" styleClass="root" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.badis.gertakess.controller.ConnexionController">
+    <!-- Adjusting padding to make the UI bigger -->
+    <padding>
+        <Insets bottom="30" left="25" right="25" top="10" />
+    </padding>
+
+    <HBox alignment="TOP_RIGHT">
+        <Button fx:id="closeButton" styleClass="close-button" onAction="#handleCloseButtonAction">
+            <graphic>
+                <FontAwesomeIconView glyphName="CLOSE" size="30" />
+            </graphic>
+        </Button>
+    </HBox>
+
+    <!-- Making the "GERTAKESS" logo bigger -->
+    <Label styleClass="section-header" text="GERTAKESS">
+        <font>
+            <Font name="System Bold" size="50.0" />
+        </font>
+    </Label>
+
+    <VBox spacing="10">
+        <HBox alignment="CENTER_LEFT">
+            <FontAwesomeIconView glyphName="USER" size="20" />
+            <Label text=" Utilisateur:">
+                <font>
+                    <Font name="System Bold" size="18.0" />
+                </font>
+            </Label>
+        </HBox>
+        <TextField fx:id="utilisateur" promptText="Saisir email ou num tel" styleClass="filter-button">
+            <prefWidth>300</prefWidth> <!-- Increase width -->
+        </TextField>
+    </VBox>
+
+    <VBox spacing="10">
+        <HBox alignment="CENTER_LEFT">
+            <FontAwesomeIconView glyphName="KEY" size="20" />
+            <Label text=" Mot De Passe:">
+                <font>
+                    <Font name="System Bold" size="18.0" />
+                </font>
+            </Label>
+        </HBox>
+        <PasswordField fx:id="motDePasse" styleClass="filter-button">
+            <prefWidth>300</prefWidth> <!-- Increase width -->
+        </PasswordField>
+    </VBox>
+
+    <!-- Making the "Se connecter" button text bigger -->
+    <Button styleClass="apply-filter-button" text="Se connecter" fx:id="connectButton" onAction="#seConnecter">
+        <font>
+            <Font name="System Bold" size="22.0" />
+        </font>
+        <prefWidth>200</prefWidth> <!-- Increase width -->
+        <prefHeight>50</prefHeight> <!-- Increase height -->
+    </Button>
+</VBox>

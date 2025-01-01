@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/src/main/java/com/badis/gertakess/dao/CommandeDAO.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/badis/gertakess/dao/EmployeDAO.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/badis/gertakess/dao/PanierDAO.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/badis/gertakess/dao/PointageDAO.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/badis/gertakess/dao/ProduitDAO.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/badis/gertakess/dao/VenteDAO.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/data.sql" dialect="MySQL" />
+  </component>
+</project>
