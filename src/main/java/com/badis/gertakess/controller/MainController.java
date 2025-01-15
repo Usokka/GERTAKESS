@@ -5,12 +5,10 @@ import com.badis.gertakess.dao.VenteDAO;
 import com.badis.gertakess.model.Employee;
 import com.badis.gertakess.model.Pointage;
 import com.badis.gertakess.model.Vente;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -138,11 +136,16 @@ public class MainController {
     private void handleUserMenuAction(String action) {
         switch (action) {
             case "Se Déconnecter":
-                Pointage p = PointageDAO.getLastPointageOf(ConnexionController.emp.getIdEmpl());
-                p.setHeureSortiePoint(LocalTime.now());
-                PointageDAO.modifierPointage(p);
-                ConnexionController.mainStage.close();
+                seDeconnecter();
                 break;
         }
+    }
+
+    @FXML
+    private void seDeconnecter() {
+        Pointage p = PointageDAO.getLastPointageOf(ConnexionController.emp.getIdEmpl());
+        p.setHeureSortiePoint(LocalTime.now());
+        PointageDAO.modifierPointage(p);
+        ConnexionController.mainStage.close();
     }
 }
