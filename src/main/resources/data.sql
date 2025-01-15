@@ -156,7 +156,7 @@ ALTER TABLE `vente`
     ADD CONSTRAINT `vente_ibfk_1` FOREIGN KEY (`idEmpl`) REFERENCES `employe` (`idEmpl`);
 
 INSERT INTO `employe` (`nomEmpl`, `prenomEmpl`, `sexeEmpl`, `dateNaissEmpl`, `adresseEmpl`, `SituationEmpl`, `emailEmpl`, `numTelEmpl`, `mdpCptEmpl`, `permissionCptEmpl`, `dateCptEmpl`, `etatEmpl`) VALUES
-    ('AOURTILANE', 'Badis', 'HOMME', '2004-11-24', 'Tinebdar', 'MARIE', 'idk@gmail.com', '0554422512', 'aniss', 'ADMIN', '2024-12-11', 1);
+    ('AOURTILANE', 'Badis', 'HOMME', '2004-11-24', 'Tinebdar', 'MARIE', 'badisaourtilane@gmail.com', '0500000000', 'badiss', 'ADMIN', '2024-12-11', 1);
 
 INSERT INTO `contrat` (`typeContr`, `dateDebContr`, `dateFinContr`, `posteContr`, `dateQuitPoste`, `salaireContr`, `idEmpl`) VALUES
     ('CDI', '2024-12-01', NULL, 'Gérant', NULL, 10000.00, 1)
