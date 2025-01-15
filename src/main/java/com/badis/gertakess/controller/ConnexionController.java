@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -91,6 +92,8 @@ public class ConnexionController {
         mainStage.setTitle("GERTAKESS");
         mainStage.setScene(scene);
         mainStage.setMaximized(true);
+        mainStage.initStyle(StageStyle.UNDECORATED);
+
         mainStage.show();
 
         Stage loginStage = (Stage) connectButton.getScene().getWindow();
