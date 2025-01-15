@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.Region?>
 <VBox stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.badis.gertakess.controller.MainController">
-    <Region fx:id="shade" style="-fx-background-color: rgba(0, 0, 0, 0.5);"
-            StackPane.alignment="CENTER" visible="false" />
-    <padding>
-        <Insets left="20" right="20" />
-    </padding>
+    <Region fx:id="shade" style="-fx-background-color: rgba(0, 0, 0, 0.5);" visible="false" StackPane.alignment="CENTER" />
 
     <HBox alignment="CENTER_LEFT" styleClass="top-bar">
         <Label styleClass="app-title" text="GERTAKESS" HBox.hgrow="ALWAYS" />
         <HBox alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
+         <Button onAction="#seDeconnecter" maxWidth="Infinity" styleClass="nav-button" text="Se Déconnecter" style="-fx-background-color: -danger-color"/>
 
             <MenuButton fx:id="userMenuButton" styleClass="user-menu-button">
                 <graphic>
@@ -50,7 +46,7 @@
             </graphic>
         </Button>
 
-        <Button fx:id="employeesButton" maxWidth="Infinity" styleClass="nav-button" text="Employés" HBox.hgrow="ALWAYS">
+        <Button fx:id="employeesButton" maxWidth="Infinity" styleClass="nav-button" text="Employés" HBox.hgrow="ALWAYS" >
          <graphic>
             <FontAwesomeIconView fill="WHITE" glyphName="USERS" size="20" />
          </graphic>
@@ -75,8 +71,11 @@
         </Button>
 
     </HBox>
-    <StackPane fx:id="mainContent" styleClass="main-content" VBox.vgrow="ALWAYS" minHeight="300">
+    <StackPane fx:id="mainContent" minHeight="300" styleClass="main-content" VBox.vgrow="ALWAYS">
 
     </StackPane>
+    <padding>
+        <Insets left="20" right="20" />
+    </padding>
 
 </VBox>
